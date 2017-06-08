@@ -13,6 +13,9 @@ var BookService = (function () {
     BookService.prototype.getBooks = function () {
         return Promise.resolve(mock_books_1.BOOKS);
     };
+    BookService.prototype.getBook = function (id) {
+        return this.getBooks().then(function (books) { return books.find(function (book) { return book.id === id; }); });
+    };
     return BookService;
 }());
 BookService = __decorate([

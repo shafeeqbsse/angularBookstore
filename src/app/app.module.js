@@ -9,10 +9,11 @@ var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var router_1 = require("@angular/router");
 var forms_1 = require("@angular/forms");
+var book_service_1 = require("./book.service");
 var app_component_1 = require("./app.component");
+var dashboard_component_1 = require("./dashboard.component");
 var book_detail_component_1 = require("./book-detail.component");
 var book_list_component_1 = require("./book-list.component");
-var book_service_1 = require("./book.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -25,13 +26,27 @@ AppModule = __decorate([
             forms_1.FormsModule,
             router_1.RouterModule.forRoot([
                 {
+                    path: '',
+                    redirectTo: '/dashboard',
+                    pathMatch: 'full'
+                },
+                {
                     path: 'books',
                     component: book_list_component_1.BookListComponent
+                },
+                {
+                    path: 'dashboard',
+                    component: dashboard_component_1.DashboardComponent
+                },
+                {
+                    path: 'book/:id',
+                    component: book_detail_component_1.BookDetailComponent
                 }
             ])
         ],
         declarations: [
             app_component_1.AppComponent,
+            dashboard_component_1.DashboardComponent,
             book_list_component_1.BookListComponent,
             book_detail_component_1.BookDetailComponent
         ],
