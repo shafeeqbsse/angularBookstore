@@ -9,17 +9,7 @@ import {BookService} from './book.service';
 
 @Component({
   selector: 'book-detail',
-  template: `
-<div *ngIf="book">
-  <h4>{{book.title}} details</h4>
-  <div>
-    <label>title: </label>
-    <input [(ngModel)]="book.title" placeholder="title">
-  </div>
-  <div><label>id: </label>{{book.id}}</div>
-  <div><label>author: </label>{{book.author}}</div>
-</div>
-`
+  templateUrl: './book-detail.component.html'
 })
 
 export class BookDetailComponent implements OnInit {
@@ -34,6 +24,10 @@ export class BookDetailComponent implements OnInit {
     this.route.params
       .switchMap((params: Params) => this.bookService.getBook(+params['id'])) // + converts string to number
       .subscribe(book => this.book = book);
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
   @Input() book: Book;
